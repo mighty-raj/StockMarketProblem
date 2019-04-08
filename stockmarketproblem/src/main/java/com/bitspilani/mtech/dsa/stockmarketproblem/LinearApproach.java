@@ -31,8 +31,8 @@ public class LinearApproach {
 
     public static void main(String[] args) {
 
-        //long startTime = System.currentTimeMillis();
-        long startTime = System.nanoTime();
+        /*//long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();*/
 
         int priceArr[] = { 13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7 };
 
@@ -42,14 +42,14 @@ public class LinearApproach {
         System.out.println("Day to buy: " + (startIdx + 1));
         System.out.println("Day to sell: " + (highIdx + 1));
 
-        //long endTime = System.currentTimeMillis();
+        /*//long endTime = System.currentTimeMillis();
         //long duration = (endTime - startTime);  //Total execution time in milli seconds
 
         long endTime = System.nanoTime();
         long durationInNano = (endTime - startTime);
 
         System.out.println();
-        System.out.println("Total Run Time in MilliSeconds: " + durationInNano);
+        System.out.println("Total Run Time in MilliSeconds: " + durationInNano);*/
 
 
     }
