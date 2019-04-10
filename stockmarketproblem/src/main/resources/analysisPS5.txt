@@ -38,10 +38,3 @@ T(n) = 2T(n/2) + O(n)
 Applying, Master's Theorem, we can sovle above recurrence equation, which results as "O(n log n)"
 
 So, time complexity for Divide N Conquer is "O(n log n)"
-
-
-
-
-
-
-
