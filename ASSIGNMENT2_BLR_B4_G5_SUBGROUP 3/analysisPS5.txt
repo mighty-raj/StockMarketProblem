@@ -1,0 +1,47 @@
+
+LINEAR APPROACH:
+---------------
+
+With two loops, outer loop and inner loop, linear approach algorithm iterates, as below:
+     n times in first iteration, and
+     (n-1) times in the second iteration, and
+     (n-2) times in 3rd iteration,
+     and this continues untill the last element of the array, iterating only 1 time with only 1 element.
+
+Which can be analysed as below:
+
+=> n + (n-1) + (n-2) + .... 1
+
+=> n(n+1) / 2
+
+=> O(n^2)
+
+So, Linear approach algorithm, takes time-complexity, O(n^2) time to compute max subarray/ Max profit sub-array from given input array.
+
+
+
+DIVIDE AND CONQUER APPROACH:
+---------------------------
+
+In Divide & Conquer strategy, we divide the given input array into two halves by calcuclating the mid-point, and then we calculate the crossing max subarray.
+
+    1. Since we are calculating mid-point and dividing the array into two halves, which can be chosed represented in terms of time-complexity as "2T(n/2)"
+
+    2. Calculating Max-Subarray, may take time-complexity of O(n), considering below two cases:
+        a. calculating sum for left subarray, may iterate over 'n/2' elements to calculate sum
+        b. calculating sum for right subarray, may iterate over 'n/2' elements to calculate sum
+
+Considering, above two steps, Time-Complexity to find Max Profit Subarray, using Divide and Conquer strategy, can be represented as below:
+
+T(n) = 2T(n/2) + O(n)
+
+Applying, Master's Theorem, we can sovle above recurrence equation, which results as "O(n log n)"
+
+So, time complexity for Divide N Conquer is "O(n log n)"
+
+
+
+
+
+
+
