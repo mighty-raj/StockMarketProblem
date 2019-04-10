@@ -1,6 +1,27 @@
 package com.bitspilani.mtech.dsa.stockmarketproblem;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+
+/**
+ * This Class is used to find
+ * Day-to-Buy,
+ * Day-to-Sell &
+ * Total Profit gain
+ * in a LINEAR APPROACH from given input source file
+ *
+ * @author ASSIGNMENT2_BLR_B4_G5_SUBGROUP 3
+ * @version 1.0
+ *
+ *
+ */
 public class LinearApproach {
+
+    public static int priceList[] = new int[17];
+    public static int priceChangeList[] = new int[16];
 
     public static int startIdx = 0;
     public static int highIdx = 0;
@@ -8,10 +29,36 @@ public class LinearApproach {
     public static long cumSum = 0l;
     public static long highestTillNow = 0l;
 
+    public static void main(String[] args) {
+
+        if(args.length != 1){
+            System.out.println("Please pass req. argument, input file path");
+            System.exit(-1);
+        }
+
+        readInput(args[0]);
+
+        maxProfitInvestment(priceChangeList);
+
+        System.out.println("Maximum Profit: " + highestTillNow);
+        System.out.println("Day to buy: " + (startIdx + 1));
+        System.out.println("Day to sell: " + (highIdx + 1));
+
+
+
+    }
+
+    /**
+     * This method is used to find the Day to Buy, Day to Sell & total profit gain in Linear approach
+     * from given input source file
+     *
+     * @param stockPrice This is the array which holds, difference of stock price changes
+     *
+     * @return void This method doesn't return anything, instead prints our desired output to console
+     */
     public static void maxProfitInvestment(int[] stockPrice) {
 
         for (int i = 0; i < stockPrice.length; i++){
-
 
             cumSum = stockPrice[i];
 
@@ -29,28 +76,39 @@ public class LinearApproach {
 
     }
 
-    public static void main(String[] args) {
 
-        /*//long startTime = System.currentTimeMillis();
-        long startTime = System.nanoTime();*/
+    /**
+     * This method is used to read the input file, containing stock pirce change list for 17days.
+     * @param inpFile This is the input file to read stock price list
+     * @return void This method doesn't return anything, instead read's input file
+     */
+    public static void readInput(String inpFile){
 
-        int priceArr[] = { 13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7 };
+        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(inpFile))) {
+            String line = bufferedReader.readLine();
 
-        maxProfitInvestment(priceArr);
+            int i = 0;
 
-        System.out.println("Maximum Profit: " + highestTillNow);
-        System.out.println("Day to buy: " + (startIdx + 1));
-        System.out.println("Day to sell: " + (highIdx + 1));
+            while ((line != null) && (i < priceList.length)) {
 
-        /*//long endTime = System.currentTimeMillis();
-        //long duration = (endTime - startTime);  //Total execution time in milli seconds
+                String[] lineSplit = line.split("\\/");
 
-        long endTime = System.nanoTime();
-        long durationInNano = (endTime - startTime);
+                priceList[i] = Integer.parseInt(lineSplit[1]);
+                i++;
 
-        System.out.println();
-        System.out.println("Total Run Time in MilliSeconds: " + durationInNano);*/
+                line = bufferedReader.readLine();
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File Not Found: " + inpFile);
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+        for(int x=1; x < priceList.length; x++){
+            int chng = priceList[x] - priceList[x-1];
+            priceChangeList[x-1] = chng;
+        }
 
     }
 
