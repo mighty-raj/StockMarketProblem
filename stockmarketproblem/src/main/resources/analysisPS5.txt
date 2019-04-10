@@ -27,7 +27,7 @@ In Divide & Conquer strategy, we divide the given input array into two halves by
 
     1. Since we are calculating mid-point and dividing the array into two halves, which can be chosed represented in terms of time-complexity as "2T(n/2)"
 
-    2. Calcuclating Max-Subarray, may take time-complexity of O(n), considering below two cases:
+    2. Calculating Max-Subarray, may take time-complexity of O(n), considering below two cases:
         a. calculating sum for left subarray, may iterate over 'n/2' elements to calculate sum
         b. calculating sum for right subarray, may iterate over 'n/2' elements to calculate sum
 
